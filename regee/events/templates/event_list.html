@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h2>Event list</h2>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end ">
+        <a href="{% url 'create_event' %}" 
+            class="btn btn-primary">Create event</a>
+    </div>
+    
+    <br />
+    
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+    {% for event in events %}
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    {{ event.name }}
+                    
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Time: {{ event.datetime }}</h5>
+                    <a href="{% url 'event_details' event.id %}" 
+                        class="btn btn-link btn-sm">Read details
+                    </a>
+                    <div>Event creator: {{event.event_creator}}</div>
+                    {% if request.user == event.event_creator %}
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button 
+                            type="button"
+                            class="btn btn-sm btn-outline-danger"
+                            onclick="deleteEvent('{{event.id }}')"
+                         >x</button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+<script>
+    function deleteEvent(eventId){
+        fetch(`/events/${eventId}/`,{
+            method: 'DELETE',
+            data: {
+            }
+        })
+    }
+</script>
+{% endblock %}
