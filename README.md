@@ -1,4 +1,4 @@
-# Event App (in process)
+# Event App (in progress)
 
 
 ## Discription  
@@ -9,6 +9,7 @@ In your command line:
 
 ```
 git clone https://github.com/Deniskoltovich/Django-Event-App.git
+cd Django-Event-App
 ```
 
 Create virtual enviroment (optionally):
@@ -28,6 +29,7 @@ Run the app:
 
 ```
 cd regee
+python3 manage.py migrate
 python3 manage.py runserver
 ```
 
