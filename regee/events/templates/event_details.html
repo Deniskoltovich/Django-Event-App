@@ -3,9 +3,28 @@
 {% block content %}
 <div>
     <h3>{{ event.name }}</h3>
+    <img src="{{ event.poster.url }}" height="150"/>
     <div class="event-details-container">
         <div><b>Time:</b> {{ event.datetime }}</div>
         <div><b>Location:</b> {{ event.location }}</div>
+    </div>
+    <div>
+        {% if has_user_joined %}
+        {% else %}
+        <form method="post" action="{% url 'join_event' event.id %}">
+            {% csrf_token %}
+            <button type="submit">Join Event</button>
+        </form>
+        {% endif %}
+    </div>
+    <div>
+        <h4>Attendees:</h4>
+
+        {% for attend in attendees %}
+        <div>
+            {{ attend.username }}
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

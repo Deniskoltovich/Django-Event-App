@@ -3,8 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Event(models.Model):
-    event_creator = models.ForeignKey(User, related_name = 'event_creator', on_delete=models.CASCADE)
-    name = models.CharField(max_length=256, blank=False)
+    organizer = models.ForeignKey(User, related_name="organizer", on_delete=models.CASCADE)
+    name = models.CharField(max_length=256, blank=False, db_index=True)
     datetime = models.DateTimeField()
     location = models.CharField(max_length=256, blank=False)
-    attendees = models.ManyToManyField(User, related_name = 'attendees' )
+    attendees = models.ManyToManyField(User, related_name='attendees')
+    poster = models.ImageField(upload_to='events/images', blank=True)

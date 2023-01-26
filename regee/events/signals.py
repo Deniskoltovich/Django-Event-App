@@ -7,8 +7,8 @@ from .models import Event
 @receiver(request_finished)
 def request_finished_cb(sender, **kwargs):
     print("Request finished!", sender)
-    
-    
+
+
 @receiver([pre_save, post_save], sender=Event)
-def x_save_cd(sender, instance, **kwargs):
-    print(sender, instance, kwargs)
+def x_save_cb(sender, instance, **kwargs):
+    print(sender)

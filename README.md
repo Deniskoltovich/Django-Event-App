@@ -2,7 +2,7 @@
 
 
 ## Discription  
-Event application for creating, viewing and taking part in events created by other people
+Event application for creating, managing, viewing and taking part in events created by other people
 
 ## Quick start
 In your command line:

@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AddField(
             model_name='event',
-            name='event_creator',
-            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='event_creator', to=settings.AUTH_USER_MODEL),
+            name='organizer',
+            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='organizer', to=settings.AUTH_USER_MODEL),
             preserve_default=False,
         ),
         migrations.AlterField(
